@@ -1,20 +1,40 @@
 <ion-header>
-  <ion-toolbar color='success'>
-    <ion-title text-center>Login</ion-title>
+  <ion-toolbar class="orange">
+    <ion-title text-center>Tabla Didactica</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<br>
-<ion-content padding>
-  <ion-item>
-    <ion-label position='floating' >Mail</ion-label>
-    <ion-input type='text' name='email' [(ngModel)]='mail' ></ion-input> 
-  </ion-item>
-  <ion-item>
-    <ion-label position='floating'>Contraseña</ion-label>
-    <ion-input type='password' name='contraseña' [(ngModel)]='pass'></ion-input> 
-  </ion-item>
-  <br>
-  <ion-button color='success' expand='block' (click)='Entrar()'>Entrar</ion-button>
-  <ion-button color='success' expand='block' (click)="Limpiar()">Limpiar</ion-button>
+<ion-content class="fondo">
+  <ion-toolbar color="warning">
+    <ion-title>Iniciar Sesion</ion-title>
+    <br>
+    <form [formGroup]="form" >
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Mail</ion-label>
+        <ion-input type="text" formControlName="mail"></ion-input> 
+      </ion-item>
+      <br>
+      <ion-item class="full-width-input">
+        <ion-label position='floating'>Contraseña</ion-label>
+        <ion-input type="password" formControlName="clave"></ion-input> 
+      </ion-item>
+      <br>
+      <ion-button [hidden]="ocultarVerificar"  class="orange" *ngIf="logeando"  (click)="Entrar()">Entrar</ion-button>
+      <ion-button [hidden]="!ocultarVerificar" class="orange" *ngIf="logeando"  (click)="Entrar()"><i class="fa fa-spinner fa-spin"></i> Ingresando</ion-button>
+      
+    </form>
+  </ion-toolbar>
+
+  <ion-fab id="f-boton-idioma" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button class="orange">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list  side="start">
+      <ion-fab-button color="warning" (click)="AutoLog('admin')">Adm</ion-fab-button>
+      <ion-fab-button color="warning" (click)="AutoLog('invitado')">Inv</ion-fab-button>
+      <ion-fab-button color="warning" (click)="AutoLog('usuario')">Usu</ion-fab-button>
+      <ion-fab-button color="warning" (click)="AutoLog('anonimo')">Anon</ion-fab-button>
+      <ion-fab-button color="warning" (click)="AutoLog('tester')">Test</ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

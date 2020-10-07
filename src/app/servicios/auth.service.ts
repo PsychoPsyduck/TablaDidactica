@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private db: AngularFireAuth) { }
+  constructor(private db: AngularFireAuth, private router: Router) { }
 
   login(email: string, password: string){
 
@@ -21,6 +22,7 @@ export class AuthService {
     return new Promise ((resolve, rejects) => {
       this.db.signOut().then(user => {
         resolve(user);
+        this.router.navigate(['/login']);
       }).catch(err => rejects(err));
     });
   }

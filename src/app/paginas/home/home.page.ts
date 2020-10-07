@@ -18,6 +18,7 @@ export class HomePage {
   audio = new Audio();
   audioTiempo: any;
   idioma: number; // 0 : esp / 1 : ing / 2 : port
+  tema: number;
 
   animales: Animal[] = [];
   colores: Color[] = [];
@@ -30,11 +31,12 @@ export class HomePage {
     this.colores = COLORES;
     this.numeros = NUMEROS;
     this.list = ANIMALES;
+    this.tema=0;
     this.idioma = 0;
   }
 
   logOut() {
-    // this.Afauth.logout();
+    this.Afauth.logOut();
   }
 
   reproducir(item: any) {
@@ -105,13 +107,16 @@ export class HomePage {
     this.list.length = 0;
     switch (tipo) {
       case 0:
+        this.tema = 1;
         this.list = this.colores;
         break;
       case 1:
         console.log("Entró a animales");
+        this.tema = 0;
         this.list = this.animales;
         break;
       case 2:
+        this.tema = 2;
         this.list = this.numeros;
         break;
     }

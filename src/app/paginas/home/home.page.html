@@ -1,16 +1,16 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="orange">
     <ion-button slot="end" fill="clear" (click)="logOut()">
       <ion-icon style="color: aliceblue" name="log-out"></ion-icon>
     </ion-button>
     <ion-title *ngIf="idioma==0">
-      Tabla didáctica
+      Tabla Didactica
     </ion-title>
     <ion-title *ngIf="idioma==1">
-      Didactic board
+      Didactic Board
     </ion-title>
     <ion-title *ngIf="idioma==2">
-      Quadro didático
+      Quadro Didático
     </ion-title>
   </ion-toolbar>
   
@@ -19,43 +19,46 @@
 <ion-content class="content-with-full-height">
 
   <ion-list class="content-with-full-height">
-    <ion-item class="test" lines="none" *ngFor="let item of list" (click)="reproducir(item)">
+    <ion-item class="test white" lines="none" *ngFor="let item of list" (click)="reproducir(item)">
       <!-- 1290*630 -->
-      <img class="item-img" [src]="item.imagen" alt="">
+      <img class="item-img white" [src]="item.imagen" alt="">
     </ion-item>
   </ion-list>
 
   <ion-fab id="f-boton-idioma" horizontal="start" vertical="bottom" slot="fixed">
-    <ion-fab-button color="secondary">
-      <img id="img-temas" src="../../assets/temas.png" alt="">
+    <ion-fab-button color="light">
+      <!-- <img id="img-temas" src="../../assets/temas.png" alt=""> -->
+      <img class="orange" *ngIf="tema==0" src="../../assets/animales/animales.png" alt="">
+      <img class="orange" *ngIf="tema==1" src="../../assets/colores/colores.png" alt="">
+      <img class="orange" *ngIf="tema==2" src="../../assets/numeros/numeros.png" alt="">
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button color="light" (click)="cambiarTipo(0)">
+      <ion-fab-button class="orange" (click)="cambiarTipo(0)">
         <img class="img-tipo" src="../../assets/colores/colores.png" alt="">
       </ion-fab-button>
-      <ion-fab-button color="light" (click)="cambiarTipo(1)">
+      <ion-fab-button class="orange" (click)="cambiarTipo(1)">
         <img class="img-tipo" src="../../assets/animales/animales.png" alt="">
       </ion-fab-button>
-      <ion-fab-button color="light" (click)="cambiarTipo(2)">
+      <ion-fab-button class="orange" (click)="cambiarTipo(2)">
         <img class="img-tipo" src="../../assets/numeros/numeros.png" alt="">
       </ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
   <ion-fab id="f-boton-idioma" horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="secondary">
-      <img *ngIf="idioma==0" src="../../assets/banderas/es.png" alt="">
-      <img *ngIf="idioma==1" src="../../assets/banderas/en.png" alt="">
-      <img *ngIf="idioma==2" src="../../assets/banderas/pr.png" alt="">
+    <ion-fab-button color="light">
+      <img class="orange" *ngIf="idioma==0" src="../../assets/banderas/es.png" alt="">
+      <img class="orange" *ngIf="idioma==1" src="../../assets/banderas/en.png" alt="">
+      <img class="orange" *ngIf="idioma==2" src="../../assets/banderas/pr.png" alt="">
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button color="light" (click)="cambiarIdioma(0)">
+      <ion-fab-button class="orange" (click)="cambiarIdioma(0)">
         <img class="img-tipo" src="../../assets/banderas/es.png" alt="">
       </ion-fab-button>
-      <ion-fab-button color="light" (click)="cambiarIdioma(1)">
+      <ion-fab-button class="orange" (click)="cambiarIdioma(1)">
         <img class="img-tipo" src="../../assets/banderas/en.png" alt="">
       </ion-fab-button>
-      <ion-fab-button color="light" (click)="cambiarIdioma(2)">
+      <ion-fab-button class="orange" (click)="cambiarIdioma(2)">
         <img class="img-tipo" src="../../assets/banderas/pr.png" alt="">
       </ion-fab-button>
     </ion-fab-list>
